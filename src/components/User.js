@@ -70,6 +70,12 @@ export default class User extends Component {
         }));
     }
 
+    btnDelete(userId) {
+        this.setState(prevState =>({
+            users:prevState.users.filter(user => user.id !== userId)
+        }));
+        console.log("Người dùng đã bị xóa!");
+    }
 
     render() {
         return (
@@ -112,7 +118,9 @@ export default class User extends Component {
                                     this.btnEdit(u);
 
                             }}>Sửa</button>
-                                <button className="btn btn-danger">Xóa</button></td>
+                                <button className="btn btn-danger" onClick={(e) =>{
+                                    this.btnDelete(u.id);
+                                }}>Xóa</button></td>
                             </tr>
                         })
                     }
